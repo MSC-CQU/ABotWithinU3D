@@ -556,7 +556,7 @@ PlayerSettings:
   scriptingDefineSymbols: {}
   platformArchitecture: {}
   scriptingBackend:
-    Metro: 1
+    Metro: 2
   incrementalIl2cppBuild: {}
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
@@ -587,9 +587,12 @@ PlayerSettings:
   platformCapabilities:
     WindowsStoreApps:
       HumanInterfaceDevice: False
-      InternetClient: False
+      InternetClient: True
       InternetClientServer: False
+      Microphone: True
       PrivateNetworkClientServer: False
+      SpatialPerception: True
+      WebCam: False
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 
@@ -643,7 +646,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 9823994d-a2a9-4470-ac0a-aacb40b7884c
   projectName: ABotWithinU3D
   organizationId: lcyzgdy

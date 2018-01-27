@@ -121,7 +121,7 @@ Shader "MixedRealityToolkit/Fast Configurable"
 				//may be set from script so generate both paths
 				#pragma multi_compile __ _NEAR_PLANE_FADE_ON
 
-				#include "FastConfigurable.cginc"
+				#include "./FastConfigurable.cginc"
             ENDCG
         }
     } 
