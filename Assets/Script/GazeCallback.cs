@@ -6,15 +6,11 @@ public class GazeCallback : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject charactor;
-	// Use this for initialization
-	void Start()
+	[SerializeField]
+	private GameObject speakor;
+
+	public void SayHello()
 	{
-
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
+		speakor.GetComponent<BotSpeak>().Say("Hello");
 	}
 }

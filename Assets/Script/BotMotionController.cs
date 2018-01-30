@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MotionController : MonoBehaviour
+public class BotMotionController : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject charactor;
@@ -45,6 +45,9 @@ public class MotionController : MonoBehaviour
 	public void Stand()
 	{
 		isFollowing = false;
+		rigidbody.velocity = Vector3.zero;
+		motionState = MotionState.Wait;
+		anim.SetInteger("MoveState", (int)motionState);
 		Debug.Log("Standing");
 	}
 
@@ -55,16 +58,17 @@ public class MotionController : MonoBehaviour
 			Vector3 charactorPosition = charactor.transform.position;
 			Vector3 cameraPosition = camera.transform.position;
 			float dis = Vector3.Distance(charactorPosition, cameraPosition);
-			Debug.Log(dis);
+			//Debug.Log(dis);
+			Debug.Log(isFollowing);
 			charactor.transform.LookAt(camera.transform, Vector3.up);
-			if (dis > 5)
+			if (dis > 7)
 			{
 				Vector3 direction = cameraPosition - charactorPosition;
 				direction.y = 0f;
 				rigidbody.velocity = direction.normalized * 2f;
 				motionState = MotionState.Run;
 			}
-			else if (dis > 2)
+			else if (dis > 5)
 			{
 				Vector3 direction = cameraPosition - charactorPosition;
 				direction.y = 0f;
@@ -80,6 +84,7 @@ public class MotionController : MonoBehaviour
 			}
 			anim.SetInteger("MoveState", (int)motionState);
 			yield return null;
+			//if (!isFollowing) break;
 		}
 	}
 

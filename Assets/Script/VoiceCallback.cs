@@ -5,7 +5,7 @@ using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity;
 using System;
 
-public class SpackCallback : MonoBehaviour
+public class VoiceCallback : MonoBehaviour
 {
 	/*[SerializeField]
 	private GameObject charactor;
@@ -35,12 +35,12 @@ public class SpackCallback : MonoBehaviour
 
 	public void FollowMe()
 	{
-		motionController.GetComponent<MotionController>().Follow();
+		motionController.GetComponent<BotMotionController>().Follow();
 	}
 
 	public void StandStill()
 	{
-		motionController.GetComponent<MotionController>().Stand();
+		motionController.GetComponent<BotMotionController>().Stand();
 	}
 
 
