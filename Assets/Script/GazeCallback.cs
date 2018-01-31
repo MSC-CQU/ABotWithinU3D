@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GazeCallback : MonoBehaviour
+public class GazeCallback : GazeCast
 {
-	[SerializeField]
-	private GameObject charactor;
 	[SerializeField]
 	private GameObject speakor;
 
-	public void SayHello()
+	protected override void OnGazeStart()
 	{
 		speakor.GetComponent<BotSpeak>().Say("Hello");
+	}
+
+	protected override void OnGazeExit()
+	{
+	}
+
+	protected override void OnGazeHold()
+	{
+
 	}
 }

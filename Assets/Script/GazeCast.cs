@@ -4,24 +4,14 @@ using UnityEngine;
 using HoloToolkit.Unity.InputModule;
 using UnityEngine.Events;
 
-public class GazeCast : MonoBehaviour//, IFocusable
+public abstract class GazeCast : MonoBehaviour
 {
 	[Range(0.5f, 5f)]
 	[SerializeField]
 	private float gazeSpan;
-	[SerializeField]
-	private UnityEvent[] events;
 
 	private float timer;
 	private bool isGazing;
-
-	public bool IsGazing
-	{
-		get
-		{
-			return isGazing;
-		}
-	}
 
 	private void Start()
 	{
@@ -32,23 +22,31 @@ public class GazeCast : MonoBehaviour//, IFocusable
 	{
 		if (GazeManager.Instance.HitObject != null && GazeManager.Instance.HitObject == gameObject)
 		{
-			Debug.Log(timer);
+			//Debug.Log(timer);
 			timer += Time.deltaTime;
 			if (timer >= gazeSpan)
 			{
-				Debug.Log(events.Length);
-				foreach (var item in events)
+				if (isGazing == false)//timer = 0f;
 				{
-					item.Invoke();
+					isGazing = true;
+					OnGazeStart();
 				}
-				timer = 0f;
-				isGazing = true;
+				else
+				{
+					OnGazeHold();
+				}
 			}
 		}
 		else
 		{
 			timer = 0f;
 			isGazing = false;
+
+			OnGazeExit();
 		}
 	}
+
+	protected abstract void OnGazeStart();
+	protected abstract void OnGazeHold();
+	protected abstract void OnGazeExit();
 }

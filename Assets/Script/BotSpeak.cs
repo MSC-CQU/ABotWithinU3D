@@ -16,6 +16,7 @@ public class BotSpeak : MonoBehaviour
 	{
 		GetComponent<MeshRenderer>().enabled = true;
 		var speakor = audioOutput.GetComponent<TextToSpeech>();
+		if (speakor.IsSpeaking()) return;
 		speakor.StartSpeaking(sent);
 		text.GetComponent<TextMesh>().text = sent;
 	}
