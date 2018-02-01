@@ -210,9 +210,8 @@ GameObject:
   - component: {fileID: 669038737}
   - component: {fileID: 669038736}
   - component: {fileID: 669038738}
-  - component: {fileID: 669038739}
-  - component: {fileID: 669038741}
   - component: {fileID: 669038740}
+  - component: {fileID: 669038741}
   m_Layer: 0
   m_Name: Charactor
   m_TagString: Untagged
@@ -287,38 +286,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 669038733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 386801994b597524fa0ac2364306bfdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gazeSpan: 0.5
-  events:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 669038739}
-        m_MethodName: SayHello
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &669038739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 669038733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 335e29b43755fbd49bcad9332826472e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charactor: {fileID: 669038733}
+  gazeSpan: 5
   speakor: {fileID: 1256597606}
 --- !u!114 &669038740
 MonoBehaviour:
@@ -423,6 +394,7 @@ GameObject:
   - component: {fileID: 756187043}
   - component: {fileID: 756187044}
   - component: {fileID: 756187045}
+  - component: {fileID: 756187046}
   m_Layer: 0
   m_Name: VoiceController
   m_TagString: Untagged
@@ -470,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Keywords:
-  - Keyword: Hey
+  - Keyword: Hey siri
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -487,7 +459,7 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - Keyword: Follow
+  - Keyword: Follow me
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -504,7 +476,7 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - Keyword: Stand
+  - Keyword: Stand still
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -521,8 +493,36 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+  - Keyword: "\u6D4B\u8BD5"
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 756187044}
+          m_MethodName: Test
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   IsGlobalListener: 1
   PersistentKeywords: 0
+--- !u!114 &756187046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 756187042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de42317356ed51342bed3adef55d8016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &765422003
 Prefab:
   m_ObjectHideFlags: 0
@@ -638,12 +638,14 @@ MonoBehaviour:
   PersistentKeywords: 0
   RecognizerStart: 0
   Keywords:
-  - Keyword: Hey
+  - Keyword: Hey siri
     KeyCode: 106
-  - Keyword: Follow
+  - Keyword: Follow me
     KeyCode: 107
-  - Keyword: Stand
+  - Keyword: Stand still
     KeyCode: 108
+  - Keyword: "\u6D4B\u8BD5"
+    KeyCode: 117
   recognitionConfidenceLevel: 1
 --- !u!1 &1031204880
 GameObject:
