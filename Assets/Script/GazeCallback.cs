@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows.Speech;
 
 public class GazeCallback : GazeCast
 {
@@ -26,14 +27,17 @@ public class GazeCallback : GazeCast
 
     }
 
-    protected override void OnGazeIn()
-    {
-        voiceInput.GetComponent<SpeechInputSource>().StopKeywordRecognizer();
-        myVoiceInput.GetComponent<MyVoiceInputManager>().StartDictation();
-    }
+    //public void OnFocusEnter()
+    //{
+    //    //voiceInput.GetComponent<SpeechInputSource>().StopKeywordRecognizer();
+    //    PhraseRecognitionSystem.Shutdown();
+    //    myVoiceInput.GetComponent<MyVoiceInputManager>().StartDictation();
+    //}
 
-    protected override void OnGazeStay()
-    {
-
-    }
+    //public void OnFocusExit()
+    //{
+    //    myVoiceInput.GetComponent<MyVoiceInputManager>().StopDictation();
+    //    PhraseRecognitionSystem.Shutdown();
+    //    voiceInput.GetComponent<SpeechInputSource>().StartKeywordRecognizer();
+    //}
 }

@@ -60,13 +60,4 @@ public abstract class GazeCast : MonoBehaviour
     /// 视线退出触发
     /// </summary>
     protected abstract void OnGazeExit();
-
-    /// <summary>
-    /// 视线刚刚进入触发
-    /// </summary>
-    protected abstract void OnGazeIn();
-    /// <summary>
-    /// 请根据OnGazeIn()的注释联想
-    /// </summary>
-    protected abstract void OnGazeStay();
 }

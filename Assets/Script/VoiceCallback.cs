@@ -4,8 +4,9 @@ using UnityEngine;
 using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity;
 using System;
+using UnityEngine.Windows.Speech;
 
-public class VoiceCallback : MonoBehaviour, IDictationHandler
+public class VoiceCallback : MonoBehaviour, IMyDictationHandler
 {
     /*[SerializeField]
 	private GameObject charactor;
@@ -13,12 +14,12 @@ public class VoiceCallback : MonoBehaviour, IDictationHandler
 	private GameObject hololensCamera;*/
     [SerializeField]
     private GameObject motionController;
-    [SerializeField]
+    /*[SerializeField]
     private MicStream.StreamCategory streamType = MicStream.StreamCategory.HIGH_QUALITY_VOICE;
     [SerializeField]
     private float inputGain = 1f;
     [SerializeField]
-    private bool keepAllData;
+    private bool keepAllData;*/
 
     private bool isResording;
 
@@ -38,39 +39,40 @@ public class VoiceCallback : MonoBehaviour, IDictationHandler
         motionController.GetComponent<BotMotionController>().Stand();
     }
 
-    public void Test()
+    public void Test(string r = "")
     {
-        Debug.Log("测试");
+        Debug.Log("测试: " + r);
     }
-
-
-    private void Update()
-    {
-        Debug.Log(DictationInputManager.IsListening);
-    }
-
 
     private void CheckForErrorOnCall(int returnCode)
     {
         MicStream.CheckForErrorOnCall(returnCode);
     }
 
-    public void OnDictationHypothesis(DictationEventData eventData)
+    public void OnDictationHypothesis(string text)
     {
         Debug.Log("Hypothesis");
     }
 
-    public void OnDictationResult(DictationEventData eventData)
+    public void OnDictationResult(string text, ConfidenceLevel confidence)
     {
-        Debug.Log(eventData.DictationResult);
+        Debug.Log(text);
+        if (text.ToLower() == "跟随")
+        {
+            FollowMe();
+        }
+        else if (text.ToLower() == "原地等待")
+        {
+            StandStill();
+        }
     }
 
-    public void OnDictationComplete(DictationEventData eventData)
+    public void OnDictationComplete(DictationCompletionCause cause)
     {
         Debug.Log("Complete");
     }
 
-    public void OnDictationError(DictationEventData eventData)
+    public void OnDictationError(string error, int hresult)
     {
         Debug.Log("Dictation error!");
     }

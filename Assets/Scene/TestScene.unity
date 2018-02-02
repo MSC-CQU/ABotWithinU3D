@@ -291,6 +291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gazeSpan: 5
   speakor: {fileID: 1256597606}
+  voiceInput: {fileID: 782339462}
+  myVoiceInput: {fileID: 669038733}
 --- !u!114 &669038740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +396,6 @@ GameObject:
   - component: {fileID: 756187043}
   - component: {fileID: 756187044}
   - component: {fileID: 756187045}
-  - component: {fileID: 756187046}
   m_Layer: 0
   m_Name: VoiceController
   m_TagString: Untagged
@@ -436,7 +437,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 756187042}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7d6513c2cdf97f409654a2a4114d9b1, type: 3}
   m_Name: 
@@ -499,7 +500,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 756187044}
           m_MethodName: Test
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -512,17 +513,6 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   IsGlobalListener: 1
   PersistentKeywords: 0
---- !u!114 &756187046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 756187042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de42317356ed51342bed3adef55d8016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &765422003
 Prefab:
   m_ObjectHideFlags: 0
@@ -604,6 +594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782339463}
   - component: {fileID: 782339464}
+  - component: {fileID: 782339465}
   m_Layer: 0
   m_Name: VoiceInput
   m_TagString: Untagged
@@ -630,7 +621,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 782339462}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c62fd7a55ba7458499b69cae18f83806, type: 3}
   m_Name: 
@@ -645,8 +636,36 @@ MonoBehaviour:
   - Keyword: Stand still
     KeyCode: 108
   - Keyword: "\u6D4B\u8BD5"
-    KeyCode: 117
+    KeyCode: 0
   recognitionConfidenceLevel: 1
+--- !u!114 &782339465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 782339462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de42317356ed51342bed3adef55d8016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recognizerStart: 0
+  onDictationResult:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 756187044}
+        m_MethodName: Test
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1031204880
 GameObject:
   m_ObjectHideFlags: 0
