@@ -15,7 +15,7 @@ public class GazeCallback : GazeCast
 
     protected override void OnGazeStart()
     {
-        speakor.GetComponent<BotSpeak>().Say("Hello");
+        //speakor.GetComponent<BotSpeak>().Say("Hello");
     }
 
     protected override void OnGazeExit()

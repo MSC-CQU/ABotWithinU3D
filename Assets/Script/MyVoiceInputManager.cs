@@ -1,11 +1,11 @@
-﻿using HoloToolkit.Unity.InputModule;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.Windows.Speech;
+using HoloToolkit.Unity.InputModule;
 
 [System.Serializable]
 public class UnityEventString : UnityEvent<string>
@@ -37,7 +37,7 @@ public class MyVoiceInputManager : MonoBehaviour
     {
         //Debug.Log("Result: " + text);
         var dictationHandlers = (from i in FindObjectsOfType(typeof(MonoBehaviour))
-                                 where i.GetType().GetInterfaces().Contains(typeof(IMyDictationHandler))
+                                 where i is IMyDictationHandler
                                  select ((IMyDictationHandler)i)).ToArray();
         foreach (var i in dictationHandlers)
         {
@@ -50,7 +50,7 @@ public class MyVoiceInputManager : MonoBehaviour
     {
         //Debug.Log("Hypothesis: " + text);
         var dictationHandlers = (from i in FindObjectsOfType(typeof(MonoBehaviour))
-                                 where i.GetType().GetInterfaces().Contains(typeof(IMyDictationHandler))
+                                 where i is IMyDictationHandler
                                  select ((IMyDictationHandler)i)).ToArray();
         foreach (var i in dictationHandlers)
         {
@@ -62,7 +62,7 @@ public class MyVoiceInputManager : MonoBehaviour
     {
         //Debug.Log("Error: " + error);
         var dictationHandlers = (from i in FindObjectsOfType(typeof(MonoBehaviour))
-                                 where i.GetType().GetInterfaces().Contains(typeof(IMyDictationHandler))
+                                 where i is IMyDictationHandler
                                  select ((IMyDictationHandler)i)).ToArray();
         foreach (var i in dictationHandlers)
         {
@@ -75,7 +75,7 @@ public class MyVoiceInputManager : MonoBehaviour
     {
         //Debug.Log("Complete: " + cause.ToString());
         var dictationHandlers = (from i in FindObjectsOfType(typeof(MonoBehaviour))
-                                 where i.GetType().GetInterfaces().Contains(typeof(IMyDictationHandler))
+                                 where i is IMyDictationHandler
                                  select ((IMyDictationHandler)i)).ToArray();
         foreach (var i in dictationHandlers)
         {

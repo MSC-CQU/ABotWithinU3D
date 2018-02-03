@@ -6,6 +6,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+#if WSA || UNITY_EDITOR || UNITY_WSA
+
+#else
 public class HttpClient
 {
     private HttpWebRequest request;
@@ -32,18 +35,14 @@ public class HttpClient
         header.Clear();
     }
 
-    public async Task<HttpResponse> PostAsync<T>(string url, Content<T> content, string cookie = "")
+    public async Task<HttpResponse> PostAsync<T>(string url, Content<T> content)
     {
         request = HttpWebRequest.CreateHttp(url);
-        if (cookie != "")
-        {
-            request.Headers.Add("Cookie", cookie);
-        }
         foreach (var item in header)
         {
             request.Headers.Add(item.Key, item.Value);
         }
-        request.ContentType =
+        //request.ContentType =
         //Console.WriteLine(request.Host);
         //request. = url;
         request.Method = "POST";
@@ -53,7 +52,7 @@ public class HttpClient
         return new HttpResponse(req);
     }
 
-    public async Task<HttpResponse> PostAsync<T>(string url, Content<T> content, string contentType, string cookie = "")
+    /*public async Task<HttpResponse> PostAsync<T>(string url, Content<T> content, string contentType, string cookie = "")
     {
         request = HttpWebRequest.CreateHttp(url);
         if (cookie != "")
@@ -72,7 +71,7 @@ public class HttpClient
         await request.GetRequestStream().WriteAsync(temp, 0, temp.Length);
         var req = await request.GetResponseAsync();
         return new HttpResponse(req);
-    }
+    }*/
 }
 
 public class HttpResponse
@@ -231,3 +230,4 @@ public class MyHttpException : Exception
     {
     }
 }
+#endif

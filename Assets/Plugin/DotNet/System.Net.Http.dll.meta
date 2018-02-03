@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8f891bd98a3a6f64ca47e71cb3a41224
-timeCreated: 1517062299
+guid: 73d98d1d3846f5f44b673cc67f441788
+timeCreated: 1517642874
 licenseType: Free
 PluginImporter:
   externalObjects: {}
@@ -16,7 +16,7 @@ PluginImporter:
       enabled: 0
       settings:
         Exclude Android: 1
-        Exclude Editor: 1
+        Exclude Editor: 0
         Exclude Linux: 1
         Exclude Linux64: 1
         Exclude LinuxUniversal: 1
@@ -24,7 +24,7 @@ PluginImporter:
         Exclude WebGL: 1
         Exclude Win: 1
         Exclude Win64: 1
-        Exclude WindowsStoreApps: 0
+        Exclude WindowsStoreApps: 1
   - first:
       Android: Android
     second:
@@ -39,7 +39,7 @@ PluginImporter:
   - first:
       Editor: Editor
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
         DefaultValueInitialized: true
@@ -95,9 +95,9 @@ PluginImporter:
   - first:
       Windows Store Apps: WindowsStoreApps
     second:
-      enabled: 1
+      enabled: 0
       settings:
-        CPU: ARM
+        CPU: AnyCPU
         DontProcess: False
         PlaceholderPath: 
         SDK: AnySDK

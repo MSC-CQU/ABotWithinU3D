@@ -557,7 +557,7 @@ PlayerSettings:
     14: 
   platformArchitecture: {}
   scriptingBackend:
-    Metro: 1
+    Metro: 2
   incrementalIl2cppBuild: {}
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
@@ -566,12 +566,12 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: ABotWithinU3D
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: Assets\WSATestCertificate.pfx
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
   metroCertificateNotAfter: 80cc25cd6cb9d401
-  metroApplicationDescription: ABotWithinU3D
+  metroApplicationDescription: A Bot Within U3D
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -591,7 +591,7 @@ PlayerSettings:
       BlockedChatMessages: False
       Bluetooth: False
       Chat: False
-      CodeGeneration: False
+      CodeGeneration: True
       EnterpriseAuthentication: False
       HumanInterfaceDevice: False
       InputInjectionBrokered: False
@@ -603,7 +603,7 @@ PlayerSettings:
       Objects3D: False
       PhoneCall: False
       PicturesLibrary: False
-      PrivateNetworkClientServer: False
+      PrivateNetworkClientServer: True
       Proximity: False
       RemovableStorage: False
       SharedUserCertificates: False
@@ -615,7 +615,7 @@ PlayerSettings:
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 
-  metroCompilationOverrides: 1
+  metroCompilationOverrides: 2
   tizenProductDescription: 
   tizenProductURL: 
   tizenSigningProfileName: 

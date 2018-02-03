@@ -5,6 +5,9 @@ using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity;
 using System;
 using UnityEngine.Windows.Speech;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.CSharp;
 
 public class VoiceCallback : MonoBehaviour, IMyDictationHandler
 {
@@ -20,6 +23,8 @@ public class VoiceCallback : MonoBehaviour, IMyDictationHandler
     private float inputGain = 1f;
     [SerializeField]
     private bool keepAllData;*/
+    [SerializeField]
+    private GameObject speakor;
 
     private bool isResording;
 
@@ -52,11 +57,13 @@ public class VoiceCallback : MonoBehaviour, IMyDictationHandler
     public void OnDictationHypothesis(string text)
     {
         Debug.Log("Hypothesis");
+        speakor.GetComponent<BotSpeak>().Show(text + "...");
     }
 
     public void OnDictationResult(string text, ConfidenceLevel confidence)
     {
         Debug.Log(text);
+        speakor.GetComponent<BotSpeak>().Say(text);
         if (text.ToLower() == "跟随")
         {
             FollowMe();
