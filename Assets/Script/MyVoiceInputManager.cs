@@ -60,7 +60,7 @@ public class MyVoiceInputManager : MonoBehaviour
 
     private void DictationRecognizer_DictationError(string error, int hresult)
     {
-        //Debug.Log("Error: " + error);
+        Debug.Log("Error: " + error);
         var dictationHandlers = (from i in FindObjectsOfType(typeof(MonoBehaviour))
                                  where i is IMyDictationHandler
                                  select ((IMyDictationHandler)i)).ToArray();
@@ -104,6 +104,7 @@ public class MyVoiceInputManager : MonoBehaviour
         dictationRecognizer.DictationError -= DictationRecognizer_DictationError;
         dictationRecognizer.DictationHypothesis -= DictationRecognizer_DictationHypothesis;
         dictationRecognizer.DictationResult -= DictationRecognizer_DictationResult;
+
         dictationRecognizer.Dispose();
     }
 }

@@ -24,10 +24,15 @@ public class BotMotionController : MonoBehaviour
         isFollowing = false;
         motionState = MotionState.Wait;
         randomTimeSpan = Random.Range(1000, 5000);
+
+        charactor.transform.position = new Vector3(charactor.transform.position.x, camera.transform.position.y - 1f,
+            charactor.transform.position.z);
     }
 
     private void Update()
     {
+        //charactor.transform.position = new Vector3(charactor.transform.position.x, camera.transform.position.y, charactor.transform.position.z);
+
         if (randomTimeSpan < 0 && motionState == MotionState.Wait)
         {
 
@@ -38,6 +43,7 @@ public class BotMotionController : MonoBehaviour
     {
         if (isFollowing) return;
         isFollowing = true;
+        //charactor.GetComponent<HoloToolkit.Unity.Billboard>().enabled = true;
         StartCoroutine(FollowCamera());
         Debug.Log("Following");
     }
@@ -47,29 +53,35 @@ public class BotMotionController : MonoBehaviour
         isFollowing = false;
         rigidbody.velocity = Vector3.zero;
         motionState = MotionState.Wait;
+        //charactor.GetComponent<HoloToolkit.Unity.Billboard>().enabled = false;
         anim.SetInteger("MoveState", (int)motionState);
         Debug.Log("Standing");
     }
 
     private IEnumerator FollowCamera()
     {
+        float div = 0.01f;
         while (isFollowing)
         {
             Vector3 charactorPosition = charactor.transform.position;
             Vector3 cameraPosition = camera.transform.position;
             float dis = Vector3.Distance(charactorPosition, cameraPosition);
-            charactor.transform.position = new Vector3(charactor.transform.position.x, camera.transform.position.y, charactor.transform.position.z);
-            //Debug.Log(dis);
+            charactor.transform.position = new Vector3(charactor.transform.position.x,
+                Mathf.Lerp(charactor.transform.position.y, camera.transform.position.y - 1f, div += Time.deltaTime),
+                charactor.transform.position.z);
+            Debug.Log(dis);
             //Debug.Log(isFollowing);
             charactor.transform.LookAt(camera.transform, Vector3.up);
-            if (dis > 7)
+            var tempRotation = charactor.transform.rotation.eulerAngles;
+            charactor.transform.rotation = Quaternion.Euler(0, tempRotation.y, tempRotation.z);
+            if (dis > 3.5f)
             {
                 Vector3 direction = cameraPosition - charactorPosition;
                 direction.y = 0f;
                 rigidbody.velocity = direction.normalized * 2f;
                 motionState = MotionState.Run;
             }
-            else if (dis > 5)
+            else if (dis > 2)
             {
                 Vector3 direction = cameraPosition - charactorPosition;
                 direction.y = 0f;

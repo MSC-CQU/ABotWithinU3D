@@ -14,6 +14,7 @@ public class BotSpeak : MonoBehaviour
 
     public void Say(string sent)
     {
+        Debug.Log("Say: " + sent);
         GetComponent<MeshRenderer>().enabled = true;
         var speakor = audioOutput.GetComponent<TextToSpeech>();
         if (speakor.IsSpeaking()) return;

@@ -76,7 +76,7 @@ public class VoiceCallback : MonoBehaviour, IMyDictationHandler
 
     public void OnDictationComplete(DictationCompletionCause cause)
     {
-        Debug.Log("Complete");
+        Debug.Log("Complete" + cause.ToString());
     }
 
     public void OnDictationError(string error, int hresult)
