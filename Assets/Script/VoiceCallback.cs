@@ -25,8 +25,16 @@ public class VoiceCallback : MonoBehaviour, IMyDictationHandler
     private bool keepAllData;*/
     [SerializeField]
     private GameObject speakor;
+    [SerializeField]
+    private string luisUrl;
 
     private bool isResording;
+
+    struct IntentAndEntity
+    {
+        public string intent;
+        public string[] entities;
+    }
 
     public void StartRecord()
     {
@@ -60,7 +68,7 @@ public class VoiceCallback : MonoBehaviour, IMyDictationHandler
         speakor.GetComponent<BotSpeak>().Show(text + "...");
     }
 
-    public void OnDictationResult(string text, ConfidenceLevel confidence)
+    public async void OnDictationResult(string text, ConfidenceLevel confidence)
     {
         Debug.Log(text);
         speakor.GetComponent<BotSpeak>().Say(text);
@@ -71,6 +79,15 @@ public class VoiceCallback : MonoBehaviour, IMyDictationHandler
         else if (text.ToLower() == "原地等待")
         {
             StandStill();
+        }
+        else
+        {
+            // LUIS后端
+            HttpClient http = new HttpClient();
+            var res = await http.GetAsync(luisUrl + text);
+            var obj = JsonUtility.FromJson<IntentAndEntity>(await res.Content.ReadAsStringAsync());
+            //obj.intent;
+            // 自定义
         }
     }
 
